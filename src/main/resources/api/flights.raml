@@ -1,0 +1,85 @@
+#%RAML 1.0
+title: Flights
+
+/Flights:
+ get:
+   queryParameters:
+     destination:
+       required: true
+       enum:
+         - SFO
+         - LAX
+         - CLE
+   responses:
+     200:
+       body:
+         application/json:
+           example:
+             [{"ID": 1,
+             "Price": 545.25,
+             "origin": "IND",
+             "destination": "SFO",
+             "departuredate": "12/09/2020"},
+             {"ID": 2,
+             "Price": 560.95,
+             "origin": "IND",
+             "destination": "LAX",
+             "departuredate": "15/09/2020"}]
+ post:
+   displayName: Add the flight
+   body:
+      application/json:
+        example:
+          {"ID": 1,
+          "price": 550.50,
+          "orgin": "IND",
+          "destination": "SFO",
+          "departuredate": "23/11/2020"}
+   responses:
+     201:
+       body:
+         application/json:
+           example:
+              {"Message": "Flights added (but not really)"}
+
+/{id}:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            example:
+              {"ID": 1,
+              "Price": 560.25,
+              "destination": "SFO",
+              "origin": "IND",
+              "Totalseats": 0,
+              "emptyseats": 2}
+  delete:
+    responses:
+      200:
+        body:
+          application/json:
+            example:
+              {"Message": "Flights deleted (but not really)"}
+  put:
+    displayName: Update the flight 
+    body:
+      application/json:
+       example:
+         {"ID": 1,
+          "Price": 545.25,
+          "origin": "IND",
+          "destination": "SFO",
+          "departuredate": "12/09/2020"}
+    responses:
+      200:
+        body:
+          application/json:
+            example:
+              {"Message": "Flights updated (but not really)"}
+              
+        
+              
+
+     
